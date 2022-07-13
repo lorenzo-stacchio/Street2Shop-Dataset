@@ -4,8 +4,8 @@ Code to download Street2Shop Dataset from the paper "Where to Buy It: Matching S
 
 # Download meta files
 
-[*] Download photo urls from [this](http://www.tamaraberg.com/street2shop/wheretobuyit/photos.tar)
-[*] Download dataset triplets from [this](http://www.tamaraberg.com/street2shop/wheretobuyit/meta.zip)
+* Download photo urls from [this](http://www.tamaraberg.com/street2shop/wheretobuyit/photos.tar)
+* Download dataset triplets from [this](http://www.tamaraberg.com/street2shop/wheretobuyit/meta.zip)
 
 Unpack both files. 
 
