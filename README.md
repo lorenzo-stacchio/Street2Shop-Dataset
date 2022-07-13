@@ -1,5 +1,10 @@
 # Street2Shop-Dataset
-Code to download Street2Shop Dataset from the paper "Where to Buy It: Matching Street Clothing Photos in Online Shops"
+
+![alt text](http://www.tamaraberg.com/street2shop/header.jpg)
+
+
+
+Code to download Street2Shop Dataset from the paper [Where to Buy It: Matching Street Clothing Photos in Online Shops](https://openaccess.thecvf.com/content_iccv_2015/papers/Kiapour_Where_to_Buy_ICCV_2015_paper.pdf).
 
 
 # Download meta files
