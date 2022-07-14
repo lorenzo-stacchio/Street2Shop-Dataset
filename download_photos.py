@@ -25,11 +25,13 @@ def task(urls, errors, id):
         #                  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'))
 
         filepath = os.path.join(images_dir, filename + '.png')
-        try:
-            filename, headers = opener.retrieve(real_url, filepath)
-        except Exception as e:
-            # print("%s ----- Error with %s --- %s" % (e,filepath, real_url))
-            errors.append(real_url)
+
+        if not os.path.exists(filepath):
+            try:
+                filename, headers = opener.retrieve(real_url, filepath)
+            except Exception as e:
+                # print("%s ----- Error with %s --- %s" % (e,filepath, real_url))
+                errors.append(real_url)
 
 
 images_dir = 'D:/Lorenzo Stacchio/Datasets/street2shop/street2shop-dataset/images/'
