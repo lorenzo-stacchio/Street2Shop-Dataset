@@ -34,7 +34,7 @@ def task(urls, errors, id):
                 errors.append(real_url)
 
 
-images_dir = 'D:/Lorenzo Stacchio/Datasets/street2shop/street2shop-dataset/images/'
+images_dir = 'D:\Papers\Datasets\street2sho\Street2Shop-Dataset\images'
 
 with open('photos/photos.txt', "r") as f:
     lines = f.readlines()
