@@ -12,6 +12,8 @@ from utils import crop_and_adapt_image
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 errors = []
 
+min_side_shape= 300
+
 # a custom function that blocks for a moment
 def task(urls, errors, id):
     for url in tqdm.tqdm(urls, desc="Thread %s downloading" % id):
@@ -31,11 +33,10 @@ def task(urls, errors, id):
         if not os.path.exists(filepath):
             try:
                 result = opener.retrieve(real_url, filepath)
-                crop_and_adapt_image()
+                crop_and_adapt_image(filepath, min_side_shape= 300, replace=True)
             except Exception as e:
                 print("%s ----- Error with %s --- %s" % (e,filepath, real_url))
                 errors.append(real_url)
-        # exit()
 
 images_dir = '/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images/'
 
@@ -43,7 +44,7 @@ with open('photos/photos.txt', "r") as f:
     lines = f.readlines()
     total_urls = []
 
-    for each in tqdm.tqdm(lines, desc="Parsing file"):
+    for each in tqdm.tqdm(lines[:10], desc="Parsing file"):
         total_urls.append(each)
 
     # total_urls = ["ciao1,http://ecx.images-amazon.com/images/I/81gTZOlbIFL._UL1500_.jpg","ciao2,http://ecx.images-amazon.com/images/I/81GQFhMSDvL._UL1500_.jpg"]
