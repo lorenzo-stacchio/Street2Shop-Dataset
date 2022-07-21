@@ -32,10 +32,14 @@ def task(urls, errors, id):
 
         if not os.path.exists(filepath):
             try:
+                # Manage redirect urls or broken one
+                real_url = urllib.request.urlopen(real_url).geturl()
                 result = opener.retrieve(real_url, filepath)
                 crop_and_adapt_image(filepath, min_side_shape= 300, replace=True)
             except Exception as e:
-                # print("%s ----- Error with %s --- %s" % (e,filepath, real_url))
+                # print(e)
+                print("%s ----- %s --- %s" % (e,filename, real_url))
+
                 errors.append("%s,%s,%s" % (e, filename, real_url))
 
 images_dir = '/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images/'
