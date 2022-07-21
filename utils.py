@@ -1,6 +1,5 @@
 import cv2
-from sklearn.feature_extraction import img_to_graph
-import numpy as np 
+import numpy as np
 import os 
 
 min_side_shape = 300

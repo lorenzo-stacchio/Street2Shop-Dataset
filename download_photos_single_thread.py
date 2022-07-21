@@ -35,8 +35,8 @@ def task(urls, errors, id):
                 result = opener.retrieve(real_url, filepath)
                 crop_and_adapt_image(filepath, min_side_shape= 300, replace=True)
             except Exception as e:
-                print("%s ----- Error with %s --- %s" % (e,filepath, real_url))
-                errors.append(real_url)
+                # print("%s ----- Error with %s --- %s" % (e,filepath, real_url))
+                errors.append("%s,%s,%s" % (e, filename, real_url))
 
 images_dir = '/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images/'
 
@@ -44,11 +44,11 @@ with open('photos/photos.txt', "r") as f:
     lines = f.readlines()
     total_urls = []
 
-    for each in tqdm.tqdm(lines[:10], desc="Parsing file"):
+    # for each in tqdm.tqdm(lines[:30000], desc="Parsing file"):
+    for each in tqdm.tqdm(lines, desc="Parsing file"):
         total_urls.append(each)
 
     # total_urls = ["ciao1,http://ecx.images-amazon.com/images/I/81gTZOlbIFL._UL1500_.jpg","ciao2,http://ecx.images-amazon.com/images/I/81GQFhMSDvL._UL1500_.jpg"]
-
     # divide urls and create threads
     task(total_urls,errors, 0)
 
