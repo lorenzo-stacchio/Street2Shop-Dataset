@@ -1,0 +1,68 @@
+{
+    "bags": {
+        "bad_filepaths": [],
+        "good": 579,
+        "total": 579,
+        "percentage": 100.0
+    },
+    "belts": {
+        "bad_filepaths": [],
+        "good": 235,
+        "total": 235,
+        "percentage": 100.0
+    },
+    "dresses": {
+        "bad_filepaths": [],
+        "good": 12875,
+        "total": 12875,
+        "percentage": 100.0
+    },
+    "eyewear": {
+        "bad_filepaths": [],
+        "good": 358,
+        "total": 358,
+        "percentage": 100.0
+    },
+    "footwear": {
+        "bad_filepaths": [],
+        "good": 6486,
+        "total": 6486,
+        "percentage": 100.0
+    },
+    "hats": {
+        "bad_filepaths": [],
+        "good": 400,
+        "total": 400,
+        "percentage": 100.0
+    },
+    "leggings": {
+        "bad_filepaths": [],
+        "good": 1641,
+        "total": 1641,
+        "percentage": 100.0
+    },
+    "outerwear": {
+        "bad_filepaths": [],
+        "good": 1945,
+        "total": 1945,
+        "percentage": 100.0
+    },
+    "pants": {
+        "bad_filepaths": [],
+        "good": 600,
+        "total": 600,
+        "percentage": 100.0
+    },
+    "skirts": {
+        "bad_filepaths": [],
+        "good": 3337,
+        "total": 3337,
+        "percentage": 100.0
+    },
+    "tops": {
+        "bad_filepaths": [],
+        "good": 2173,
+        "total": 2173,
+        "percentage": 100.0
+    }
+}

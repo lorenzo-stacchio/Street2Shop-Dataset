@@ -38,7 +38,7 @@ def task(urls, errors, id):
                 crop_and_adapt_image(filepath, min_side_shape= 300, replace=True)
             except Exception as e:
                 # print(e)
-                print("%s ----- %s --- %s" % (e,filename, real_url))
+                #print("%s ----- %s --- %s" % (e,filename, real_url))
 
                 errors.append("%s,%s,%s" % (e, filename, real_url))
 

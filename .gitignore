@@ -129,7 +129,10 @@ dmypy.json
 .pyre/
 
 images/
+images_backup
+images_backup/
 test_crop/
 meta/
 photos/
 .idea/
+test.jpg
