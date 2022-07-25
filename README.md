@@ -1,6 +1,7 @@
 # Street2Shop-Dataset
+<p align="right"><img src="https://visitor-badge.laobi.icu/badge?page_id=lorenzo-stacchio.Street2Shop-Dataset" alt="visitors"></p>
 
-![alt text](http://www.tamaraberg.com/street2shop/header.jpg)
+<!-- ![alt text](http://www.tamaraberg.com/street2shop/header.jpg) -->
 
 
 
