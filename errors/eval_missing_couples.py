@@ -7,14 +7,16 @@ def collect_good_items(list_of_dicts_category, all_images_without_ext, length_al
     for dict_ in tqdm.tqdm(list_of_dicts_category, desc = "Collecting for %s" % category):
         # print(dict_)
         #photo_id, product_id = dict_["photo"], dict_["product"]
-        photo_id = str(dict_["photo"])
+        photo_id, product_id = str(dict_["photo"]),str(dict_["product"])
 
         #reformat photo id to match filename
         photo_id_full = ("0" * (length_all_paths-len(photo_id))) + photo_id
+        product_id = ("0" * (length_all_paths-len(product_id))) + product_id
 
         # print(photo_id, photo_id_full)
         # print()
-        if photo_id_full in all_images_without_ext:
+        # TODO: VALIDATE THAT THE PRODUCT ID IS REFERRED TO A PHOTO, FOR ME NO.
+        if (photo_id_full in all_images_without_ext) and (product_id in all_images_without_ext):
             good_pairs +=1
         else:
             bad_filepaths.append(photo_id_full)
@@ -33,8 +35,8 @@ length_all_paths = [len(x) for x in all_images_without_ext]
 length_filepath = length_all_paths[0] # they are all the same
 
 
-modes = ["train", "test", "retrieval"]
-# modes = ["train", "test"]
+#modes = ["train", "test", "retrieval"]
+modes = ["train", "test"]
 
 errors_category_mode = {k:{} for k in modes}
 

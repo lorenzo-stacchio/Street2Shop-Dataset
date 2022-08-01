@@ -136,3 +136,5 @@ meta/
 photos/
 .idea/
 test.jpg
+
+plot_images_partitions/
