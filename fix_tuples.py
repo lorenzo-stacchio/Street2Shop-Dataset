@@ -23,11 +23,11 @@ def get_dict_products_id_and_photo_id(set_partition_dicts):
     return dict_partition
 
 
-def write_partition_file(list_consumer, list_shop,filepath):
+def write_partition_file(list_image_id, list_consumer, list_shop,filepath):
     with open(filepath,"w") as fw:
-        fw.write("cons,shop\n")
-        for c,s in zip(list_consumer,list_shop):
-            fw.write("%s,%s\n"% (c,s))
+        fw.write("id,cons,shop\n")
+        for id, c,s in zip(list_image_id, list_consumer,list_shop):
+            fw.write("%s,%s,%s\n"% (id, c,s))
 
 
 product_prefix = "retrieval"
@@ -35,7 +35,9 @@ product_prefix = "retrieval"
 modes = ["train", "test"]
 
 dir_json = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/partitions_tuples/"
-img_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images/"
+# img_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images_mine_downloaded/"
+img_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/UNIMORE_RESIZED/"
+
 tuple_out_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/partitions_tuples_reduced_correct_images/"
 
 all_images = os.listdir(img_dir)

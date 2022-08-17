@@ -24,11 +24,11 @@ def get_dict_products_id_and_photo_id(set_partition_dicts):
     # exit()
 
 
-def write_partition_file(list_consumer, list_shop,filepath):
+def write_partition_file(list_image_id, list_consumer, list_shop,filepath):
     with open(filepath,"w") as fw:
-        fw.write("cons,shop\n")
-        for c,s in zip(list_consumer,list_shop):
-            fw.write("%s,%s\n"% (c,s))
+        fw.write("id,cons,shop\n")
+        for id, c,s in zip(list_image_id, list_consumer,list_shop):
+            fw.write("%s,%s,%s\n"% (id, c,s))
 
 
 product_prefix = "retrieval"
@@ -36,7 +36,7 @@ product_prefix = "retrieval"
 modes = ["train", "test"]
 
 dir_json = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/meta/meta/json/"
-img_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images/"
+img_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images_mine_downloaded/"
 plot_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/plot_images_partitions/test/"
 tuple_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/partitions_tuples/"
 
@@ -46,11 +46,10 @@ print(len(all_images))
 
 c = 0
 
-
 for m in modes:
     for path in glob.glob(dir_json + "%s*" % m):
         path = path.replace("\\", "/")
-        list_image_cat_consumer, list_image_cat_shop = [],[]
+        list_image_id, list_image_cat_consumer, list_image_cat_shop = [],[],[]
         filename = path.split("/")[-1].split(".")[0]
         cat = filename.split("_")[-1]
 
@@ -68,9 +67,9 @@ for m in modes:
             dict_merged[k] = {"consumer": dict_data_cat_unique[k],"shop": dict_data_cat_ret_unique[k]}
             # Creating pairs
         for id_product,dict_photos_id in dict_merged.items():
-
             for cons,shop in itertools.product(*[dict_photos_id["consumer"],dict_photos_id["shop"]]):
                 #print(cons,shop)
+                list_image_id.append(id_product)
                 list_image_cat_consumer.append(cons)
                 list_image_cat_shop.append(shop)
                 #exit()
@@ -78,7 +77,7 @@ for m in modes:
         #     exit()
         print(len(list_image_cat_shop), len(list_image_cat_consumer))
 
-        write_partition_file(list_image_cat_consumer, list_image_cat_shop, tuple_dir + "%s.txt" % filename)
+        write_partition_file(list_image_id, list_image_cat_consumer, list_image_cat_shop, tuple_dir + "%s.txt" % filename)
 
 
         # exit()
