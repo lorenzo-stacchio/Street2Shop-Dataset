@@ -62,6 +62,11 @@ for path in tqdm.tqdm(glob.glob(dir_json + "*"), desc= "Erasing pairs with at le
     df["shop_path"] = df["shop_path"].apply(lambda x: all_images[all_images_no_ext.index(x)])
     # Save final df
     df = df.drop(["cons", "shop", "both_exist"], axis = 1)
+
+    # Ensure bboxes are integers
+    for col in ["left","width","top","height"]:
+        df[col] = df[col].astype(int)
+
     df.to_csv(tuple_out_dir + "%s" % os.path.basename(path), index=False)
     # print(df)
     # exit()

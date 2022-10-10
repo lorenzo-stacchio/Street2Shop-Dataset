@@ -78,7 +78,8 @@ for m in modes:
         print("INTERSECTION ", path, len(dict_data_category_unique_bbox.keys()), len(dict_data_category_retrieval_unique.keys()), len(intersection))
 
 
-        ## test existance of images with more than one bbox
+        # test existance of images with more than one bbox
+        #### CODE TO CHECK BAGS IN TRAIN PAIRS --- > 3976 ---> ID OF A PICTURE WITH 2 BBOXES
         # for k,v in dict_data_category_unique_bbox.items():
         #     if any([len(list_bbox)>1 for list_bbox in list(v.values())]):
         #         print("\n----------------------")
