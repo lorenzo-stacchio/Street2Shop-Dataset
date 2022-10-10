@@ -35,9 +35,11 @@ def write_partition_file(list_consumer, list_shop, filepath):
 product_prefix = "retrieval"
 modes = ["train", "test"]
 
-dir_json = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/meta/meta/json_wacv/"
+# dir_json = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/meta/meta/json_wacv/"
+dir_json = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/meta/meta/json/"
+
 # img_dir = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images/"
-img_dir = '/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/UNIMORE_RESIZED/'
+img_dir = '/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/images_download/'
 
 all_images = os.listdir(img_dir)
 
@@ -132,11 +134,11 @@ for m in modes:
 
 print("----------------FINAL RESULTS----------------")
 # THIS COUNTS ALL THE CORRECTED ISEM USED IN TRAINING AND TESTING
-print(items_correct)
-print(total_images)
-print(len(image_id_already_tested))
+print("total items",items_correct)
+print("total images in items",total_images)
 
 # THIS COUNTS ALL THE IMAGES LISTED IN THE TRAIN, TEST AND RETRIEVAL CLASSES, WITH NO INTERESECTION AND NO ID INTERSECTION CHECK
+# print(len(image_id_already_tested))
 image_id_already_tested = set(image_id_already_tested)
 print(len(image_id_already_tested.intersection(set(all_images_no_ext))))
 # print(total_images_top)

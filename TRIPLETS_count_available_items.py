@@ -52,6 +52,7 @@ total_images = 0
 image_id_already_tested = []
 
 tot_images = 0
+tot_pairs = 0
 
 for m in modes:
     print(m)
@@ -62,10 +63,12 @@ for m in modes:
         filename = path.split("/")[-1].split(".")[0]
         cat = filename.split("_")[-1]
         df = pd.read_csv(path)
+        tot_pairs += len(df)
         tot_images += len(set(df["cons_path"]))
         tot_images += len(set(df["shop_path"]))
         # print(len(df))
         # id,cons_path,shop_path
         # dict_data_cat, dict_data_cat_ret = json.load(open(path, "r")), json.load(open(retrieval_path, "r"))
 
+print(tot_pairs)
 print(tot_images)
