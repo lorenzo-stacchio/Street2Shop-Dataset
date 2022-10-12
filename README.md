@@ -25,3 +25,15 @@ It requires python version 3.x
 # Search for troublesome images after download has finished
 
 > python missing.py 
+
+
+## Error found in dataset
+
+In the original file, the image 000008288 labelled as bbox with id 4916 has no width and height. 
+
+This gave the born to the ```validate_bboxes.py``` script.
+
+
+## BROKEN LINKS
+
+000098538.jpg was removed from pictures because of link contained a broken image.
