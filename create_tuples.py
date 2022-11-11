@@ -1,8 +1,6 @@
 import os
 from pickle import TRUE
-import random
 import json, glob
-import shutil
 import itertools
 
 def get_original_code(code, final_length = 9):
@@ -10,10 +8,13 @@ def get_original_code(code, final_length = 9):
     final_code = "0" * (final_length-len(code)) + code
     return final_code
 
+'''
+This function get a list of input dicts (json annotations) and join all the products with the same id 
+'''
 
 def get_dict_products_id_and_photo_id(set_partition_dicts, bbox = TRUE):
     dict_partition = {}
-    for el_dict in set_partition_dicts:
+    for el_dict in set_partition_dicts: # set_partition_dicts is train or test queries
         photo_id = el_dict["photo"]
         id_prod = el_dict["product"]
         if bbox: # parsing consumer
@@ -23,7 +24,6 @@ def get_dict_products_id_and_photo_id(set_partition_dicts, bbox = TRUE):
             elif photo_id not in dict_partition[id_prod].keys():
                 dict_partition[id_prod][photo_id] = [bbox]
             else:
-                # dict_partition[id_prod]["images_id"].append(photo_id)
                 dict_partition[id_prod][photo_id].append(bbox)
         else: # parsing shop
             if id_prod not in dict_partition.keys():
@@ -60,20 +60,20 @@ c = 0
 for m in modes:
     for path in glob.glob(dir_json + "%s*" % m):
         # print(path)
-        path = path.replace("\\", "/")
-        list_image_id, list_image_cat_consumer, list_image_cat_shop, list_bbox = [],[],[], []
-        filename = path.split("/")[-1].split(".")[0]
-        cat = filename.split("_")[-1]
+        path = path.replace("\\", "/") # fix path
+        list_image_id, list_image_cat_consumer, list_image_cat_shop, list_bbox = [],[],[],[] # define list for triplets and bboxes
+
+        filename = path.split("/")[-1].split(".")[0] # take basename without of json path extension
+        cat = filename.split("_")[-1] # get category name to match with retrieval one
 
         retrieval_path = dir_json + "%s_%s.json" % (product_prefix,cat)
         dict_data_category,dict_data_category_retrieval = json.load(open(path, "r")),json.load(open(retrieval_path, "r"))
 
         dict_data_category_unique_bbox = get_dict_products_id_and_photo_id(dict_data_category)
-        # print(list(dict_data_category_unique_bbox.items())[0]) # not sorte ids
 
 
         dict_data_category_retrieval_unique = get_dict_products_id_and_photo_id(dict_data_category_retrieval, bbox = False)
-        # print(list(dict_data_category_retrieval_unique.items())[0]) # it's ok if the ids are differents from the previous, the first are not sorted
+
         intersection = set(list(dict_data_category_unique_bbox.keys())).intersection(set(list(dict_data_category_retrieval_unique.keys())))
         print("INTERSECTION ", path, len(dict_data_category_unique_bbox.keys()), len(dict_data_category_retrieval_unique.keys()), len(intersection))
 
@@ -97,24 +97,15 @@ for m in modes:
             dict_merged[k] = {"consumer": list(dict_data_category_unique_bbox[k].keys()),"shop": dict_data_category_retrieval_unique[k]}
             # Creating pairs
 
-
-        # print(dict_merged)
-        # exit()
-
         for id_product,dict_photos_id in dict_merged.items():
-            for cons,shop in itertools.product(*[dict_photos_id["consumer"],dict_photos_id["shop"]]):
+            for cons,shop in itertools.product(*[dict_photos_id["consumer"],dict_photos_id["shop"]]): # create couple per each consumer image with same id in same category against one of shop images
                 #print(cons,shop)
                 for bbox in dict_data_category_unique_bbox[id_product][cons]:
                     list_image_id.append(id_product)
                     list_image_cat_consumer.append(cons)
                     list_image_cat_shop.append(shop)
                     list_bbox.append(bbox)
-                #exit()
-        #
-        #     exit()
+
         print(len(list_image_cat_shop), len(list_image_cat_consumer))
 
         write_partition_file(list_image_id, list_image_cat_consumer, list_image_cat_shop, list_bbox, tuple_dir + "%s.txt" % filename)
-
-
-        # exit()

@@ -1,0 +1,13 @@
+,n_items_real,n_items_dataset,percentage_items_loss,category
+0,430,578,25.605536332179934,train_pairs_bags
+1,131,235,44.25531914893617,train_pairs_belts
+2,7656,12875,40.53592233009709,train_pairs_dresses
+3,221,358,38.268156424581,train_pairs_eyewear
+4,3125,6486,51.81930311440024,train_pairs_footwear
+5,139,400,65.25000000000001,train_pairs_hats
+6,907,1641,44.72882388787325,train_pairs_leggings
+7,844,1945,56.60668380462725,train_pairs_outerwear
+8,197,600,67.16666666666666,train_pairs_pants
+9,925,3337,72.28049145939465,train_pairs_skirts
+10,1616,2173,25.63276576161988,train_pairs_tops
+11,16191,30628,48.377242630034196,train_total

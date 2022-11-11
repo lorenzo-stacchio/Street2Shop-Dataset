@@ -1,0 +1,13 @@
+,n_items_real,n_items_dataset,percentage_items_loss,category
+0,131,174,24.712643678160916,test_pairs_bags
+1,40,89,55.0561797752809,test_pairs_belts
+2,2563,3292,22.144592952612395,test_pairs_dresses
+3,51,138,63.04347826086957,test_pairs_eyewear
+4,1035,2178,52.479338842975196,test_pairs_footwear
+5,49,86,43.02325581395349,test_pairs_hats
+6,245,517,52.61121856866537,test_pairs_leggings
+7,305,666,54.204204204204196,test_pairs_outerwear
+8,60,130,53.84615384615385,test_pairs_pants
+9,361,604,40.2317880794702,test_pairs_skirts
+10,607,763,20.44560943643512,test_pairs_tops
+11,5447,8637,43.79986031443466,test_total
