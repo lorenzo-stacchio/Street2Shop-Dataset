@@ -2,11 +2,11 @@ import pandas as pd
 import os, json, glob
 import numpy as np 
 
-
 json_folder = "/data01/AEFFE/image_embeddings_pytorch/2021_WEB_CALL/VIT_CONFERENCE_2022/Street2Shop-Dataset/meta/meta/json/"
 
 # QUERY
 train_acc, test_acc = {"n_items_real":[],"n_items_dataset":[], "percentage_items_loss": [], "category":[]}, {"n_items_real":[],"n_items_dataset":[], "percentage_items_loss": [], "category":[]}
+
 
 for mode in ["train", "test"]:
     for basename in glob.glob(json_folder + "/%s*" % mode):
