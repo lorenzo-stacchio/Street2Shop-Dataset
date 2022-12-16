@@ -151,3 +151,6 @@ UNIMORE_RESIZED
 
 images_download
 images_download/
+query_gallery/query/*
+query_gallery/gallery/*
+partitions_tuples/*.txt

@@ -4,7 +4,6 @@ import json, glob
 import shutil
 import itertools
 
-
 def get_original_code(code, final_length=9):
     code = str(code)
     final_code = "0" * (final_length - len(code)) + code
